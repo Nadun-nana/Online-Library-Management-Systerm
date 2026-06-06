@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Online Library Management System</title>
+    <title>Login - Online Library Management System of Nebula Institue of Technology</title>
     <link rel="stylesheet" href="css/index.css">
     <style>
         .alert { padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; font-size: 0.95rem; }
