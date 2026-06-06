@@ -14,6 +14,7 @@ $books = $pdo->query("SELECT title, author, number_of_copies FROM books ORDER BY
 <head>
     <title>View Books - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         .container {
             width: 550px;
@@ -95,7 +96,7 @@ $books = $pdo->query("SELECT title, author, number_of_copies FROM books ORDER BY
 
 <body>
     <div class="container">
-        <h1>Book Catalog</h1>
+        <h1><i class="fa-solid fa-list" style="margin-right:8px;"></i>Book Catalog</h1>
         <p>List of all books and their current status</p>
 
         <div class="search-box">
@@ -105,9 +106,9 @@ $books = $pdo->query("SELECT title, author, number_of_copies FROM books ORDER BY
         <table class="book-table">
             <thead>
                 <tr>
-                    <th>Book Title</th>
-                    <th>Author</th>
-                    <th>Status</th>
+                    <th><i class="fa-solid fa-book" style="margin-right:5px;"></i>Book Title</th>
+                    <th><i class="fa-solid fa-user-pen" style="margin-right:5px;"></i>Author</th>
+                    <th><i class="fa-solid fa-circle-info" style="margin-right:5px;"></i>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -134,7 +135,7 @@ $books = $pdo->query("SELECT title, author, number_of_copies FROM books ORDER BY
         </table>
 
         <div class="actions">
-            <a href="dashborad.php" class="btn">Back</a>
+            <a href="dashborad.php" class="btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
         </div>
     </div>
 
