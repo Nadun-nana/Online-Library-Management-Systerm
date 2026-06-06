@@ -1,7 +1,18 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
+
+require_once 'db.php';
+
+$books = $pdo->query("SELECT title, author, number_of_copies FROM books ORDER BY title ASC")->fetchAll();
+?>
 <html>
 
 <head>
-    <title>View Books - Online Library Management System of Nebula Institue of Technology</title>
+    <title>View Books - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
     <style>
         .container {
@@ -100,36 +111,30 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>The Great Gatsby</td>
-                    <td>F. Scott Fitzgerald</td>
-                    <td><span class="status-badge status-available">Available</span></td>
-                </tr>
-                <tr>
-                    <td>To Kill a Mockingbird</td>
-                    <td>Harper Lee</td>
-                    <td><span class="status-badge status-available">Available</span></td>
-                </tr>
-                <tr>
-                    <td>1984</td>
-                    <td>George Orwell</td>
-                    <td><span class="status-badge status-borrowed">Borrowed</span></td>
-                </tr>
-                <tr>
-                    <td>The Hobbit</td>
-                    <td>J.R.R. Tolkien</td>
-                    <td><span class="status-badge status-available">Available</span></td>
-                </tr>
-                <tr>
-                    <td>Pride and Prejudice</td>
-                    <td>Jane Austen</td>
-                    <td><span class="status-badge status-borrowed">Borrowed</span></td>
-                </tr>
+                <?php if (!empty($books)): ?>
+                    <?php foreach ($books as $book): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($book['title']) ?></td>
+                            <td><?= htmlspecialchars($book['author']) ?></td>
+                            <td>
+                                <?php if ($book['number_of_copies'] > 0): ?>
+                                    <span class="status-badge status-available">Available (<?= $book['number_of_copies'] ?>)</span>
+                                <?php else: ?>
+                                    <span class="status-badge status-borrowed">Borrowed</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="3" style="text-align: center; color: #64748b;">No books found in the library.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
 
         <div class="actions">
-            <a href="dashborad.html" class="btn">Back</a>
+            <a href="dashborad.php" class="btn">Back</a>
         </div>
     </div>
 
@@ -142,13 +147,15 @@
                 const query = searchInput.value.toLowerCase().trim();
 
                 tableRows.forEach(row => {
-                    const title = row.cells[0].textContent.toLowerCase();
-                    const author = row.cells[1].textContent.toLowerCase();
+                    if (row.cells.length >= 2) {
+                        const title = row.cells[0].textContent.toLowerCase();
+                        const author = row.cells[1].textContent.toLowerCase();
 
-                    if (title.includes(query) || author.includes(query)) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
+                        if (title.includes(query) || author.includes(query)) {
+                            row.style.display = '';
+                        } else {
+                            row.style.display = 'none';
+                        }
                     }
                 });
             });

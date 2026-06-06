@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (isset($_SESSION['user_id'])) {
+    header("Location: dashborad.php");
+    exit;
+}
+
 require_once 'db.php';
 
 $errors  = [];
@@ -22,13 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch();
 
         if ($user && password_verify($password, $user['password'])) {
-            // ✅ Login success — start session
-            session_start();
+            // Login success — set session variables
             $_SESSION['user_id']  = $user['id'];
             $_SESSION['username'] = $user['username'];
             $success = true;
-            // Redirect to dashboard (create dashboard.php later)
-            header("Location: index.html");
+            // Redirect to dashboard
+            header("Location: dashborad.php");
             exit;
         } else {
             $errors[] = "Invalid username/email or password.";
@@ -78,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-actions">
                 <input type="submit" value="Login" class="btn">
-                <a href="index.html" class="btn btn-secondary">Back</a>
+                <a href="index.php" class="btn btn-secondary">Back</a>
             </div>
         </form>
 
