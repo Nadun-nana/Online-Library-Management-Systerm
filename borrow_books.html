@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Borrow Books - Online Library Management System</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Borrow Book</h1>
+        <form action="borrow_books.html" method="post">
+            <div class="form-group">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+
+            <div class="form-group">
+                <label for="borrow_date">Date of Borrowing:</label>
+                <input type="date" id="borrow_date" name="borrow_date" required>
+            </div>
+
+            <div class="form-group">
+                <label for="return_date">Return Date:</label>
+                <input type="date" id="return_date" name="return_date" required>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Borrow Book" class="btn">
+                <a href="dashborad.html" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const today = new Date();
+            const borrowDateInput = document.getElementById('borrow_date');
+            const returnDateInput = document.getElementById('return_date');
+
+            // Format date as YYYY-MM-DD
+            const formatDate = (date) => {
+                const yyyy = date.getFullYear();
+                const mm = String(date.getMonth() + 1).padStart(2, '0');
+                const dd = String(date.getDate()).padStart(2, '0');
+                return `${yyyy}-${mm}-${dd}`;
+            };
+
+            // Set borrow date to today
+            borrowDateInput.value = formatDate(today);
+
+            // Set return date to 14 days (2 weeks) from today
+            const returnDate = new Date(today);
+            returnDate.setDate(today.getDate() + 14);
+            returnDateInput.value = formatDate(returnDate);
+        });
+    </script>
+</body>
+
+</html>
