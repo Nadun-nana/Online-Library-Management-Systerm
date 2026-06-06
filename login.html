@@ -1,34 +1,107 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <title>Login - Online Library Management System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login to the Online Library Management System.">
+    <title>Login — Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <div class="container">
-        <h1>Login</h1>
-        <form action="login.html" method="post">
+
+        <!-- Logo -->
+        <div class="logo-icon">🔑</div>
+        <h1>Welcome Back</h1>
+        <p class="subtitle">Sign in to your library account</p>
+
+        <!-- Alert box -->
+        <div id="alert-box" style="display:none;"></div>
+
+        <form id="login-form" novalidate>
+
             <div class="form-group">
-                <label for="username">Username or Email:</label>
-                <input type="text" id="username" name="username" required>
+                <label for="username">Username or Email</label>
+                <div class="input-icon">
+                    <span class="icon">👤</span>
+                    <input type="text" id="username" name="username"
+                           placeholder="Enter your username or email" required>
+                </div>
             </div>
 
             <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <label for="password">Password</label>
+                <div class="input-icon">
+                    <span class="icon">🔒</span>
+                    <input type="password" id="password" name="password"
+                           placeholder="Enter your password" required>
+                </div>
             </div>
 
             <div class="form-actions">
-                <input type="submit" value="Login" class="btn">
-                <a href="index.html" class="btn btn-secondary">Back</a>
+                <input type="submit" value="Login" class="btn" id="btn-login-submit">
+                <a href="index.html" class="btn btn-secondary" id="btn-back">← Back</a>
             </div>
+
         </form>
-        <p style="margin-top: 15px; font-size: 14px;">
-            Don't have an account? <a href="register.html" style="color: #3498db; text-decoration: none;">Register
-                Here!</a>
+
+        <div class="divider">or</div>
+
+        <p class="auth-link">
+            Don't have an account?
+            <a href="Register.html" id="link-register">Register Here!</a>
         </p>
+
     </div>
+
+    <script>
+        const form     = document.getElementById('login-form');
+        const alertBox = document.getElementById('alert-box');
+
+        function showAlert(type, message) {
+            alertBox.className = 'alert alert-' + type;
+            alertBox.innerHTML = (type === 'error' ? '⚠️ ' : '✅ ') + message;
+            alertBox.style.display = 'flex';
+        }
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const identifier = document.getElementById('username').value.trim();
+            const password   = document.getElementById('password').value.trim();
+
+            if (!identifier || !password) {
+                showAlert('error', 'Please enter your username/email and password.');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('library_users') || '[]');
+            const user  = users.find(u =>
+                (u.username === identifier || u.email === identifier) &&
+                u.password === password
+            );
+
+            if (!user) {
+                showAlert('error', 'Invalid username/email or password.');
+                return;
+            }
+
+            // Save session
+            localStorage.setItem('library_session', JSON.stringify({
+                username: user.username,
+                email:    user.email
+            }));
+
+            showAlert('success', 'Login successful! Redirecting…');
+
+            setTimeout(() => {
+                window.location.href = 'dashborad.html';
+            }, 1000);
+        });
+    </script>
+
 </body>
 
 </html>
