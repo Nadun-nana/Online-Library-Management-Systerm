@@ -1,0 +1,159 @@
+<html>
+
+<head>
+    <title>View Books - Online Library Management System</title>
+    <link rel="stylesheet" href="css/index.css">
+    <style>
+        .container {
+            width: 550px;
+            /* Slightly wider for the table layout */
+        }
+
+        .book-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            text-align: left;
+            font-size: 14px;
+        }
+
+        .book-table th,
+        .book-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #cbd5e0;
+        }
+
+        .book-table th {
+            background-color: #f4f7fc;
+            /* Matches body background color */
+            color: #2c3e50;
+            /* Matches heading color */
+            font-weight: bold;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            /* Rounded pill style for modern look */
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background-color: #e6f4ea;
+            /* Soft modern green */
+            color: #137333;
+            /* Dark green text */
+        }
+
+        .status-borrowed {
+            background-color: #fce8e6;
+            /* Soft modern red */
+            color: #c5221f;
+            /* Dark red text */
+        }
+
+        .search-box {
+            margin: 20px 0 10px 0;
+            width: 100%;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            background: #fff;
+            color: #2d3748;
+        }
+
+        .search-box input:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.15);
+        }
+
+        .actions {
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Book Catalog</h1>
+        <p>List of all books and their current status</p>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Search books by title or author...">
+        </div>
+
+        <table class="book-table">
+            <thead>
+                <tr>
+                    <th>Book Title</th>
+                    <th>Author</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>The Great Gatsby</td>
+                    <td>F. Scott Fitzgerald</td>
+                    <td><span class="status-badge status-available">Available</span></td>
+                </tr>
+                <tr>
+                    <td>To Kill a Mockingbird</td>
+                    <td>Harper Lee</td>
+                    <td><span class="status-badge status-available">Available</span></td>
+                </tr>
+                <tr>
+                    <td>1984</td>
+                    <td>George Orwell</td>
+                    <td><span class="status-badge status-borrowed">Borrowed</span></td>
+                </tr>
+                <tr>
+                    <td>The Hobbit</td>
+                    <td>J.R.R. Tolkien</td>
+                    <td><span class="status-badge status-available">Available</span></td>
+                </tr>
+                <tr>
+                    <td>Pride and Prejudice</td>
+                    <td>Jane Austen</td>
+                    <td><span class="status-badge status-borrowed">Borrowed</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="actions">
+            <a href="dashborad.html" class="btn">Back</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const tableRows = document.querySelectorAll('.book-table tbody tr');
+
+            searchInput.addEventListener('input', () => {
+                const query = searchInput.value.toLowerCase().trim();
+
+                tableRows.forEach(row => {
+                    const title = row.cells[0].textContent.toLowerCase();
+                    const author = row.cells[1].textContent.toLowerCase();
+
+                    if (title.includes(query) || author.includes(query)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
