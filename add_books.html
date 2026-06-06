@@ -13,7 +13,7 @@
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="dashborad.html" class="navbar-brand">Library System</a>
+        <a href="dashborad.html" class="navbar-brand">Nebula Institute of Technology</a>
         <div class="navbar-actions">
             <a href="dashborad.html" class="btn btn-secondary">Back to Dashboard</a>
         </div>
@@ -84,7 +84,7 @@
             window.location.href = 'login.html';
         }
 
-        const form     = document.getElementById('add-book-form');
+        const form = document.getElementById('add-book-form');
         const alertBox = document.getElementById('alert-box');
 
         function showAlert(type, message) {
@@ -96,12 +96,12 @@
         form.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            const title  = document.getElementById('book-title').value.trim();
+            const title = document.getElementById('book-title').value.trim();
             const author = document.getElementById('book-author').value.trim();
-            const year   = document.getElementById('book-year').value.trim();
+            const year = document.getElementById('book-year').value.trim();
             const copies = parseInt(document.getElementById('book-copies').value) || 1;
-            const genre  = document.getElementById('book-genre').value;
-            const desc   = document.getElementById('book-desc').value.trim();
+            const genre = document.getElementById('book-genre').value;
+            const desc = document.getElementById('book-desc').value.trim();
 
             if (!title || !author) {
                 showAlert('error', 'Book Title and Author are required.');
@@ -111,7 +111,7 @@
             // Save to localStorage
             const books = JSON.parse(localStorage.getItem('library_books') || '[]');
             books.push({
-                id:        Date.now(),
+                id: Date.now(),
                 title,
                 author,
                 year,
@@ -119,8 +119,8 @@
                 copies,
                 desc,
                 available: copies,
-                addedBy:   session.username,
-                addedAt:   new Date().toISOString()
+                addedBy: session.username,
+                addedAt: new Date().toISOString()
             });
             localStorage.setItem('library_books', JSON.stringify(books));
 
