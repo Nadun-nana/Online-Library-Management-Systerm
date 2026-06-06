@@ -4,72 +4,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Library Dashboard — manage books, search, borrow and return.">
-    <title>Dashboard — Online Library Management System</title>
+    <meta name="description" content="Library Dashboard - manage books, search, borrow and return.">
+    <title>Dashboard - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body class="dashboard-body">
 
-    <!-- ── Navbar ─────────────────────────────────────────── -->
+    <!-- Navbar -->
     <nav class="navbar">
         <a href="index.html" class="navbar-brand">
-            <div class="brand-icon">📚</div>
+            <div class="brand-icon"></div>
             Library System
         </a>
 
         <div class="navbar-actions">
             <div class="navbar-user">
-                👤 <span id="nav-username">User</span>
+                User: <span id="nav-username">User</span>
             </div>
             <a href="#" class="btn btn-secondary" id="btn-logout"
                style="padding:8px 18px;font-size:0.82rem;">
-                🚪 Logout
+                Logout
             </a>
         </div>
     </nav>
 
-    <!-- ── Main Content ───────────────────────────────────── -->
+    <!-- Main Content -->
     <div class="dashboard-content">
 
         <!-- Header -->
         <div class="dashboard-header">
-            <h1>📚 Library Dashboard</h1>
+            <h1>Library Dashboard</h1>
             <p>Welcome back, <strong id="welcome-username" style="color:#a5b4fc;">User</strong>! What would you like to do today?</p>
         </div>
 
         <!-- Search Bar -->
         <div class="search-bar">
-            <span class="search-icon">🔍</span>
-            <input type="text" id="search-input" placeholder="Search books by title, author or genre…">
+            <input type="text" id="search-input" placeholder="Search books by title, author or genre...">
             <button class="btn search-btn" onclick="searchBooks()" id="btn-search">Search</button>
         </div>
 
         <!-- Stats Row -->
         <div class="stats-row">
             <div class="stat-card">
-                <div class="stat-icon purple">📖</div>
+                <div class="stat-icon purple"></div>
                 <div class="stat-info">
                     <div class="value">1,240</div>
                     <div class="label">Total Books</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon amber">📤</div>
+                <div class="stat-icon amber"></div>
                 <div class="stat-info">
                     <div class="value">3</div>
                     <div class="label">Borrowed</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon green">✅</div>
+                <div class="stat-icon green"></div>
                 <div class="stat-info">
                     <div class="value">980</div>
                     <div class="label">Available</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon red">⏰</div>
+                <div class="stat-icon red"></div>
                 <div class="stat-info">
                     <div class="value">1</div>
                     <div class="label">Overdue</div>
@@ -79,41 +78,41 @@
 
         <!-- Quick Actions -->
         <div class="section-heading">
-            <h2>⚡ Quick Actions</h2>
+            <h2>Quick Actions</h2>
         </div>
         <div class="actions-grid">
             <a href="books.html" class="action-card" id="action-view-books">
-                <div class="action-icon">📚</div>
+                <div class="action-icon"></div>
                 <span>View Books</span>
             </a>
             <a href="#" class="action-card" id="action-search-books"
                onclick="document.getElementById('search-input').focus(); return false;">
-                <div class="action-icon">🔍</div>
+                <div class="action-icon"></div>
                 <span>Search Books</span>
             </a>
-            <a href="borrow.html" class="action-card" id="action-borrow">
-                <div class="action-icon">📤</div>
-                <span>Borrow Book</span>
+            <a href="add_books.html" class="action-card" id="action-add-books">
+                <div class="action-icon"></div>
+                <span>Add Books</span>
             </a>
             <a href="mybooks.html" class="action-card" id="action-my-books">
-                <div class="action-icon">🗂️</div>
+                <div class="action-icon"></div>
                 <span>My Books</span>
             </a>
             <a href="return.html" class="action-card" id="action-return">
-                <div class="action-icon">📥</div>
+                <div class="action-icon"></div>
                 <span>Return Book</span>
             </a>
         </div>
 
         <!-- Featured Books -->
         <div class="section-heading">
-            <h2>📖 Featured Books</h2>
+            <h2>Featured Books</h2>
             <a href="books.html" class="btn btn-secondary"
-               style="padding:7px 18px;font-size:0.82rem;">View All →</a>
+               style="padding:7px 18px;font-size:0.82rem;">View All</a>
         </div>
         <div class="books-grid" id="books-grid">
             <div class="book-card">
-                <div class="book-cover c1">📘</div>
+                <div class="book-cover c1"></div>
                 <div class="book-info">
                     <div class="book-title">The Great Gatsby</div>
                     <div class="book-author">F. Scott Fitzgerald</div>
@@ -121,7 +120,7 @@
                 </div>
             </div>
             <div class="book-card">
-                <div class="book-cover c2">📙</div>
+                <div class="book-cover c2"></div>
                 <div class="book-info">
                     <div class="book-title">1984</div>
                     <div class="book-author">George Orwell</div>
@@ -129,7 +128,7 @@
                 </div>
             </div>
             <div class="book-card">
-                <div class="book-cover c3">📗</div>
+                <div class="book-cover c3"></div>
                 <div class="book-info">
                     <div class="book-title">To Kill a Mockingbird</div>
                     <div class="book-author">Harper Lee</div>
@@ -137,7 +136,7 @@
                 </div>
             </div>
             <div class="book-card">
-                <div class="book-cover c4">📕</div>
+                <div class="book-cover c4"></div>
                 <div class="book-info">
                     <div class="book-title">The Alchemist</div>
                     <div class="book-author">Paulo Coelho</div>
@@ -148,31 +147,27 @@
 
         <!-- Footer -->
         <div class="footer">
-            © 2025 Online Library Management System. All rights reserved.
+            2025 Online Library Management System. All rights reserved.
         </div>
 
     </div>
 
     <script>
-        // ── Load session ──────────────────────────────────────
         const session = JSON.parse(localStorage.getItem('library_session') || 'null');
 
         if (!session) {
-            // Not logged in → redirect to login
             window.location.href = 'login.html';
         } else {
-            document.getElementById('nav-username').textContent    = session.username;
+            document.getElementById('nav-username').textContent     = session.username;
             document.getElementById('welcome-username').textContent = session.username;
         }
 
-        // ── Logout ────────────────────────────────────────────
         document.getElementById('btn-logout').addEventListener('click', function (e) {
             e.preventDefault();
             localStorage.removeItem('library_session');
             window.location.href = 'index.html';
         });
 
-        // ── Simple book search filter ─────────────────────────
         function searchBooks() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             if (!query) return;
@@ -199,10 +194,8 @@
             }
         }
 
-        // Allow Enter key in search
         document.getElementById('search-input').addEventListener('keydown', function (e) {
             if (e.key === 'Enter') searchBooks();
-            // Reset on empty
             if (!this.value) {
                 document.querySelectorAll('.book-card').forEach(c => c.style.display = '');
                 const nr = document.getElementById('no-results');

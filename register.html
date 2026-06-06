@@ -5,59 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Create a new account for the Online Library Management System.">
-    <title>Register — Online Library Management System</title>
+    <title>Register - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <div class="container">
 
-        <!-- Logo -->
         <div class="logo-icon"></div>
         <h1>Create Account</h1>
         <p class="subtitle">Join the library community today</p>
 
-        <!-- Error / Success alerts -->
         <div id="alert-box" style="display:none;"></div>
 
         <form id="register-form" novalidate>
 
             <div class="form-group">
                 <label for="username">Username</label>
-                <div class="input-icon">
-                    <span class="icon">👤</span>
-                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
-                </div>
+                <input type="text" id="username" name="username" placeholder="Choose a username" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <div class="input-icon">
-                    <span class="icon">🔒</span>
-                    <input type="password" id="password" name="password" placeholder="Create a strong password"
-                        required>
-                </div>
+                <input type="password" id="password" name="password" placeholder="Create a strong password" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email</label>
-                <div class="input-icon">
-                    <span class="icon"></span>
-                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
-                </div>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
             </div>
 
             <div class="form-group">
                 <label for="phone">Phone <span style="color:#64748b;font-weight:400;">(optional)</span></label>
-                <div class="input-icon">
-                    <span class="icon"></span>
-                    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
-                </div>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
             </div>
 
             <div class="form-actions">
                 <input type="submit" value="Register" class="btn" id="btn-register-submit">
-                <a href="index.html" class="btn btn-secondary" id="btn-back">← Back</a>
+                <a href="index.html" class="btn btn-secondary" id="btn-back">Back</a>
             </div>
 
         </form>
@@ -66,7 +51,7 @@
 
         <p class="auth-link">
             Already have an account?
-            <a href="login.html" id="link-login">Login Here!</a>
+            <a href="login.html" id="link-login">Login Here</a>
         </p>
 
     </div>
@@ -77,7 +62,7 @@
 
         function showAlert(type, message) {
             alertBox.className = 'alert alert-' + type;
-            alertBox.innerHTML = (type === 'error' ? '⚠️ ' : '✅ ') + message;
+            alertBox.innerHTML = message;
             alertBox.style.display = 'flex';
         }
 
@@ -86,10 +71,9 @@
 
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const phone = document.getElementById('phone').value.trim();
+            const email    = document.getElementById('email').value.trim();
+            const phone    = document.getElementById('phone').value.trim();
 
-            // Basic validation
             if (!username || !password || !email) {
                 showAlert('error', 'Please fill in all required fields.');
                 return;
@@ -99,7 +83,6 @@
                 return;
             }
 
-            // Check if username already taken
             const existing = JSON.parse(localStorage.getItem('library_users') || '[]');
             const taken = existing.find(u => u.username === username || u.email === email);
             if (taken) {
@@ -107,16 +90,12 @@
                 return;
             }
 
-            // Save new user
             existing.push({ username, password, email, phone });
             localStorage.setItem('library_users', JSON.stringify(existing));
-
-            // Save current session
             localStorage.setItem('library_session', JSON.stringify({ username, email }));
 
-            showAlert('success', 'Account created! Redirecting to dashboard…');
+            showAlert('success', 'Account created! Redirecting to dashboard...');
 
-            // Redirect to dashboard after short delay
             setTimeout(() => {
                 window.location.href = 'dashborad.html';
             }, 1200);

@@ -5,44 +5,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Login to the Online Library Management System.">
-    <title>Login — Online Library Management System</title>
+    <title>Login - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 
 <body>
     <div class="container">
 
-        <!-- Logo -->
-        <div class="logo-icon">🔑</div>
+        <div class="logo-icon"></div>
         <h1>Welcome Back</h1>
         <p class="subtitle">Sign in to your library account</p>
 
-        <!-- Alert box -->
         <div id="alert-box" style="display:none;"></div>
 
         <form id="login-form" novalidate>
 
             <div class="form-group">
                 <label for="username">Username or Email</label>
-                <div class="input-icon">
-                    <span class="icon">👤</span>
-                    <input type="text" id="username" name="username"
-                           placeholder="Enter your username or email" required>
-                </div>
+                <input type="text" id="username" name="username"
+                       placeholder="Enter your username or email" required>
             </div>
 
             <div class="form-group">
                 <label for="password">Password</label>
-                <div class="input-icon">
-                    <span class="icon">🔒</span>
-                    <input type="password" id="password" name="password"
-                           placeholder="Enter your password" required>
-                </div>
+                <input type="password" id="password" name="password"
+                       placeholder="Enter your password" required>
             </div>
 
             <div class="form-actions">
                 <input type="submit" value="Login" class="btn" id="btn-login-submit">
-                <a href="index.html" class="btn btn-secondary" id="btn-back">← Back</a>
+                <a href="index.html" class="btn btn-secondary" id="btn-back">Back</a>
             </div>
 
         </form>
@@ -51,7 +43,7 @@
 
         <p class="auth-link">
             Don't have an account?
-            <a href="Register.html" id="link-register">Register Here!</a>
+            <a href="Register.html" id="link-register">Register Here</a>
         </p>
 
     </div>
@@ -62,7 +54,7 @@
 
         function showAlert(type, message) {
             alertBox.className = 'alert alert-' + type;
-            alertBox.innerHTML = (type === 'error' ? '⚠️ ' : '✅ ') + message;
+            alertBox.innerHTML = message;
             alertBox.style.display = 'flex';
         }
 
@@ -88,13 +80,12 @@
                 return;
             }
 
-            // Save session
             localStorage.setItem('library_session', JSON.stringify({
                 username: user.username,
                 email:    user.email
             }));
 
-            showAlert('success', 'Login successful! Redirecting…');
+            showAlert('success', 'Login successful! Redirecting...');
 
             setTimeout(() => {
                 window.location.href = 'dashborad.html';
