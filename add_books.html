@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Add Book - Online Library Management System</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Add New Book</h1>
+        <form action="add_books.html" method="post">
+            <div class="form-group">
+                <label for="title">Book Title:</label>
+                <input type="text" id="title" name="title" required>
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author" required>
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category:</label>
+                <input type="text" id="category" name="category" required>
+            </div>
+
+            <div class="form-group">
+                <label for="copies">Number of Copies:</label>
+                <input type="number" id="copies" name="copies" min="1" value="1" required>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" value="Add Book" class="btn">
+                <a href="index.html" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
