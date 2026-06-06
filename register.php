@@ -50,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         .alert { padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; font-size: 0.95rem; }
         .alert-error   { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="container">
-        <h1>Create Account</h1>
+        <h1><i class="fa-solid fa-user-plus" style="margin-right:8px;"></i>Create Account</h1>
         <p class="subtitle" style="margin-bottom: 20px; text-align: center; color: #64748b;">Join the library community today</p>
 
         <?php if (!empty($errors)): ?>
@@ -80,31 +81,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <form action="register.php" method="post">
             <div class="form-group">
-                <label for="username">Username:</label>
+                <label for="username"><i class="fa-solid fa-user" style="margin-right:5px;"></i>Username:</label>
                 <input type="text" id="username" name="username" placeholder="Choose a username"
                        value="<?= htmlspecialchars($_POST['username'] ?? '') ?>" required>
             </div>
 
             <div class="form-group">
-                <label for="password">Password:</label>
+                <label for="password"><i class="fa-solid fa-lock" style="margin-right:5px;"></i>Password:</label>
                 <input type="password" id="password" name="password" placeholder="Create a strong password" required>
             </div>
 
             <div class="form-group">
-                <label for="email">Email:</label>
+                <label for="email"><i class="fa-solid fa-envelope" style="margin-right:5px;"></i>Email:</label>
                 <input type="email" id="email" name="email" placeholder="Enter your email address"
                        value="<?= htmlspecialchars($_POST['email'] ?? '') ?>" required>
             </div>
 
             <div class="form-group">
-                <label for="phone">Phone (optional):</label>
+                <label for="phone"><i class="fa-solid fa-phone" style="margin-right:5px;"></i>Phone (optional):</label>
                 <input type="tel" id="phone" name="phone" placeholder="Enter your phone number"
                        value="<?= htmlspecialchars($_POST['phone'] ?? '') ?>">
             </div>
 
             <div class="form-actions">
-                <input type="submit" value="Register" class="btn">
-                <a href="index.php" class="btn btn-secondary">Back</a>
+                <button type="submit" class="btn"><i class="fa-solid fa-user-plus"></i> Register</button>
+                <a href="index.php" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back</a>
             </div>
         </form>
 

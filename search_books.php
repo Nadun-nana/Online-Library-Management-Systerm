@@ -30,6 +30,7 @@ if ($searchQuery !== '') {
 <head>
     <title>Search Books - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         .container {
             width: 550px;
@@ -109,13 +110,13 @@ if ($searchQuery !== '') {
 
 <body>
     <div class="container">
-        <h1>Search Books</h1>
+        <h1><i class="fa-solid fa-magnifying-glass" style="margin-right:8px;"></i>Search Books</h1>
         <p>Find books in the library catalog by Title, Author, or Genre</p>
 
         <form action="search_books.php" method="get" class="search-form-group" style="display: flex;">
             <input type="text" id="search" name="query" placeholder="Enter title, author or genre..." 
                    value="<?= htmlspecialchars($searchQuery) ?>" required>
-            <input type="submit" value="Search" class="btn">
+            <input type="submit" value="🔍 Search" class="btn">
         </form>
 
         <?php if ($searchQuery !== ''): ?>
@@ -125,10 +126,10 @@ if ($searchQuery !== '') {
         <table class="book-table">
             <thead>
                 <tr>
-                    <th>Book Title</th>
-                    <th>Author</th>
-                    <th>Genre</th>
-                    <th>Status</th>
+                    <th><i class="fa-solid fa-book" style="margin-right:5px;"></i>Book Title</th>
+                    <th><i class="fa-solid fa-user-pen" style="margin-right:5px;"></i>Author</th>
+                    <th><i class="fa-solid fa-tags" style="margin-right:5px;"></i>Genre</th>
+                    <th><i class="fa-solid fa-circle-info" style="margin-right:5px;"></i>Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -156,7 +157,7 @@ if ($searchQuery !== '') {
         </table>
 
         <div class="actions">
-            <a href="dashborad.php" class="btn">Back</a>
+            <a href="dashborad.php" class="btn"><i class="fa-solid fa-arrow-left"></i> Back</a>
         </div>
     </div>
 </body>

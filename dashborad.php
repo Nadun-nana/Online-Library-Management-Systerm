@@ -28,6 +28,7 @@ $featuredBooks = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 4")->fe
     <meta name="description" content="Library Dashboard - manage books, search, borrow and return.">
     <title>Dashboard - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body class="dashboard-body">
@@ -36,7 +37,7 @@ $featuredBooks = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 4")->fe
     <nav class="navbar">
         <a href="index.php" class="navbar-brand">
             <div class="brand-icon"></div>
-            Library System
+            <i class="fa-solid fa-book-open" style="margin-right:7px;"></i>Library System
         </a>
 
         <div class="navbar-actions">
@@ -44,7 +45,7 @@ $featuredBooks = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 4")->fe
                 User: <span id="nav-username"><?= htmlspecialchars($username) ?></span>
             </div>
             <a href="logout.php" class="btn btn-secondary" id="btn-logout" style="padding:8px 18px;font-size:0.82rem;">
-                Logout
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
             </a>
         </div>
     </nav>
@@ -61,34 +62,34 @@ $featuredBooks = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 4")->fe
         <!-- Search Bar -->
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Search books by title, author or genre...">
-            <button class="btn search-btn" onclick="searchBooks()" id="btn-search">Search</button>
+            <button class="btn search-btn" onclick="searchBooks()" id="btn-search"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
         </div>
 
         <!-- Stats Row -->
         <div class="stats-row">
             <div class="stat-card">
-                <div class="stat-icon purple"></div>
+                <div class="stat-icon purple"><i class="fa-solid fa-books" style="font-size:1.4rem;"></i></div>
                 <div class="stat-info">
                     <div class="value"><?= number_format($totalBooks) ?></div>
                     <div class="label">Total Books</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon amber"></div>
+                <div class="stat-icon amber"><i class="fa-solid fa-bookmark" style="font-size:1.4rem;"></i></div>
                 <div class="stat-info">
                     <div class="value"><?= number_format($totalBorrowed) ?></div>
                     <div class="label">Borrowed</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon green"></div>
+                <div class="stat-icon green"><i class="fa-solid fa-check-circle" style="font-size:1.4rem;"></i></div>
                 <div class="stat-info">
                     <div class="value"><?= number_format($totalAvailable) ?></div>
                     <div class="label">Available Copies</div>
                 </div>
             </div>
             <div class="stat-card">
-                <div class="stat-icon red"></div>
+                <div class="stat-icon red"><i class="fa-solid fa-triangle-exclamation" style="font-size:1.4rem;"></i></div>
                 <div class="stat-info">
                     <div class="value"><?= number_format($totalOverdue) ?></div>
                     <div class="label">Overdue</div>
@@ -102,24 +103,24 @@ $featuredBooks = $pdo->query("SELECT * FROM books ORDER BY id DESC LIMIT 4")->fe
         </div>
         <div class="actions-grid">
             <a href="view_books.php" class="action-card" id="action-view-books">
-                <div class="action-icon"></div>
+                <div class="action-icon"><i class="fa-solid fa-eye"></i></div>
                 <span>View Books</span>
             </a>
             <a href="#" class="action-card" id="action-search-books"
                 onclick="document.getElementById('search-input').focus(); return false;">
-                <div class="action-icon"></div>
+                <div class="action-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
                 <span>Search Books</span>
             </a>
             <a href="add_books.php" class="action-card" id="action-add-books">
-                <div class="action-icon"></div>
+                <div class="action-icon"><i class="fa-solid fa-plus"></i></div>
                 <span>Add Books</span>
             </a>
             <a href="borrow_books.php" class="action-card" id="action-my-books">
-                <div class="action-icon"></div>
+                <div class="action-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
                 <span>Borrow Books</span>
             </a>
             <a href="return_books.php" class="action-card" id="action-return">
-                <div class="action-icon"></div>
+                <div class="action-icon"><i class="fa-solid fa-rotate-left"></i></div>
                 <span>Return Books</span>
             </a>
         </div>

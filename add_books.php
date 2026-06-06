@@ -42,6 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="description" content="Add a new book to the Online Library Management System.">
     <title>Add Book - Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         .alert { padding: 10px 15px; border-radius: 6px; margin-bottom: 15px; font-size: 0.95rem; }
         .alert-error   { background: #fde8e8; color: #b91c1c; border: 1px solid #fca5a5; }
@@ -54,15 +55,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <!-- Navbar -->
     <nav class="navbar">
-        <a href="dashborad.php" class="navbar-brand">Library System</a>
+        <a href="dashborad.php" class="navbar-brand"><i class="fa-solid fa-book-open" style="margin-right:7px;"></i>Library System</a>
         <div class="navbar-actions">
-            <a href="dashborad.php" class="btn btn-secondary">Back to Dashboard</a>
+            <a href="dashborad.php" class="btn btn-secondary"><i class="fa-solid fa-arrow-left"></i> Back to Dashboard</a>
         </div>
     </nav>
 
     <!-- Page Content -->
     <div class="page-card" style="max-width: 500px; margin: 40px auto; padding: 30px; background: #fff; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
-        <h2>Add New Book</h2>
+        <h2><i class="fa-solid fa-plus" style="margin-right:7px;"></i>Add New Book</h2>
         <span class="page-sub" style="color: #64748b; font-size: 0.9rem; display: block; margin-bottom: 20px;">Fill in the details below to add a book to the library.</span>
 
         <?php if (!empty($errors)): ?>
@@ -84,14 +85,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form action="add_books.php" method="post">
 
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="book-title" style="display: block; margin-bottom: 5px; font-weight: 500;">Book Title</label>
+                <label for="book-title" style="display: block; margin-bottom: 5px; font-weight: 500;"><i class="fa-solid fa-book" style="margin-right:5px;"></i>Book Title</label>
                 <input type="text" id="book-title" name="title" placeholder="Enter the book title"
                        value="<?= htmlspecialchars($_POST['title'] ?? '') ?>" required
                        style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px;">
             </div>
 
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="book-author" style="display: block; margin-bottom: 5px; font-weight: 500;">Author</label>
+                <label for="book-author" style="display: block; margin-bottom: 5px; font-weight: 500;"><i class="fa-solid fa-user-pen" style="margin-right:5px;"></i>Author</label>
                 <input type="text" id="book-author" name="author" placeholder="Enter the author name"
                        value="<?= htmlspecialchars($_POST['author'] ?? '') ?>" required
                        style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px;">
@@ -99,13 +100,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <div class="form-row" style="display: flex; gap: 15px; margin-bottom: 15px;">
                 <div class="form-group" style="flex: 1;">
-                    <label for="book-year" style="display: block; margin-bottom: 5px; font-weight: 500;">Year Published</label>
+                    <label for="book-year" style="display: block; margin-bottom: 5px; font-weight: 500;"><i class="fa-solid fa-calendar" style="margin-right:5px;"></i>Year Published</label>
                     <input type="number" id="book-year" name="year" placeholder="e.g. 2023" min="1000" max="2099"
                            value="<?= htmlspecialchars($_POST['year'] ?? '') ?>"
                            style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px;">
                 </div>
                 <div class="form-group" style="flex: 1;">
-                    <label for="book-copies" style="display: block; margin-bottom: 5px; font-weight: 500;">Number of Copies</label>
+                    <label for="book-copies" style="display: block; margin-bottom: 5px; font-weight: 500;"><i class="fa-solid fa-copy" style="margin-right:5px;"></i>Number of Copies</label>
                     <input type="number" id="book-copies" name="copies" placeholder="e.g. 5" min="1"
                            value="<?= htmlspecialchars($_POST['copies'] ?? '1') ?>"
                            style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px;">
@@ -113,7 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="form-group" style="margin-bottom: 15px;">
-                <label for="book-genre" style="display: block; margin-bottom: 5px; font-weight: 500;">Genre</label>
+                <label for="book-genre" style="display: block; margin-bottom: 5px; font-weight: 500;"><i class="fa-solid fa-tags" style="margin-right:5px;"></i>Genre</label>
                 <select id="book-genre" name="genre" style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; background: #fff;">
                     <option value="">Select genre</option>
                     <option <?= (($_POST['genre'] ?? '') === 'Fiction') ? 'selected' : '' ?>>Fiction</option>
@@ -128,14 +129,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
             <div class="form-group" style="margin-bottom: 20px;">
-                <label for="book-desc" style="display: block; margin-bottom: 5px; font-weight: 500;">Description (optional)</label>
+                <label for="book-desc" style="display: block; margin-bottom: 5px; font-weight: 500;"><i class="fa-solid fa-align-left" style="margin-right:5px;"></i>Description (optional)</label>
                 <textarea id="book-desc" name="description" placeholder="Brief description of the book..."
                           style="width: 100%; padding: 10px; border: 1px solid #cbd5e0; border-radius: 5px; height: 80px; resize: vertical;"><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea>
             </div>
 
             <div class="form-actions" style="display: flex; gap: 15px;">
-                <button type="submit" class="btn" id="btn-add-book">Add Book</button>
-                <a href="dashborad.php" class="btn btn-secondary" style="line-height: 2.2; text-align: center; display: inline-block;">Cancel</a>
+                <button type="submit" class="btn" id="btn-add-book"><i class="fa-solid fa-plus"></i> Add Book</button>
+                <a href="dashborad.php" class="btn btn-secondary" style="line-height: 2.2; text-align: center; display: inline-block;"><i class="fa-solid fa-xmark"></i> Cancel</a>
             </div>
 
         </form>

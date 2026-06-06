@@ -12,6 +12,7 @@ $username = $isLoggedIn ? $_SESSION['username'] : '';
     <meta name="description" content="Online Library Management System — Borrow, search and manage books with ease.">
     <title>Online Library Management System</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@ $username = $isLoggedIn ? $_SESSION['username'] : '';
 
         <!-- Logo -->
         <div class="logo-icon"></div>
-        <h1>Library System</h1>
+        <h1><i class="fa-solid fa-book-open" style="margin-right:10px;"></i>Library System</h1>
         <p class="subtitle">Your digital gateway to thousands of books</p>
 
         <?php if ($isLoggedIn): ?>
@@ -27,10 +28,10 @@ $username = $isLoggedIn ? $_SESSION['username'] : '';
             <p>You are currently logged in.</p>
             <div class="buttons" style="display: flex; gap: 15px; margin-top: 20px; justify-content: center;">
                 <a href="dashborad.php" class="btn">
-                    Dashboard
+                    <i class="fa-solid fa-gauge"></i> Dashboard
                 </a>
                 <a href="logout.php" class="btn btn-secondary">
-                    Logout
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
                 </a>
             </div>
         <?php else: ?>
@@ -39,10 +40,10 @@ $username = $isLoggedIn ? $_SESSION['username'] : '';
 
             <div class="buttons" style="display: flex; gap: 15px; margin-top: 20px; justify-content: center;">
                 <a href="login.php" class="btn" id="btn-login">
-                    Login
+                    <i class="fa-solid fa-right-to-bracket"></i> Login
                 </a>
                 <a href="register.php" class="btn btn-secondary" id="btn-register">
-                    Register
+                    <i class="fa-solid fa-user-plus"></i> Register
                 </a>
             </div>
         <?php endif; ?>
